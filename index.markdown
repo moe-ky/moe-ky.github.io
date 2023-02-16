@@ -5,5 +5,4 @@
 layout: homePage
 ---
 
-### Moeky
-Hi Welcome to my page. 
+this is the page content
