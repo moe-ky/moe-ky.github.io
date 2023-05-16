@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moeky</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .profile-pic {
+            margin-bottom: 20px;
+        }
+
+        .profile-pic img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .link {
+            max-width: 400px;
+            min-height: 100px;
+            margin: 10px auto;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            overflow: hidden;
+            cursor: pointer;
+            transition: height 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .link h3 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .link p {
+            margin: 10px 0 0;
+            font-style: italic;
+            color: #ffffff;
+        }
+
+        .link a {
+            display: block;
+            text-decoration: none;
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .expanded {
+            height: auto !important;
+        }
+    </style>
+    <script>
+        function toggleDescription(event) {
+            const link = event.currentTarget;
+            link.classList.toggle('expanded');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.link');
+            links.forEach(function(link) {
+                link.addEventListener('click', toggleDescription);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Moeky</h1>
+    <div class="profile-pic">
+        <img src="https://images.pexels.com/photos/1144687/pexels-photo-1144687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile Picture">
+    </div>
+    <div class="links">
+        <div class="category">
+            <h2>Projects</h2>
+            <div class="link">
+                <h3>Newslitty</h3>
+                <p> A curated newsletter library! it's goal is to provide you with a collection of valuable insight that will help you stay ahead in your industry and interest areas. Our team carefully curates each newsletter to ensure that you receive the most relevant and useful information.</p>
+                <a href="http://newslitty.com">Visit Newslitty</a>
+            </div>
+            <div class="link">
+                <h3>Programming eBook</h3>
+                <p>I believe in being practical, if we are going to learn to code we might as well learn by doing.</p>
+                <a target="_blank" href="https://www.dropbox.com/s/xo3cec5uo6kpbsw/Learn-To-Code-By-Solving-Problem-Book-1-final.pdf?dl=0">Learn More</a>
+            </div>
+            <!-- Add more personal projects here -->
+        </div>
+        <!-- Add more categories and links here -->
+    </div>
+</body>
+</html>
