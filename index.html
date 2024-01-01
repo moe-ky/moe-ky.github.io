@@ -3,82 +3,96 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Moeky</title>
   </head>
   <style>
     body{
-        margin-top:50px;
-        margin-bottom: 50px;
+        font-family: 'Lato', sans-serif;
         background-color: #152228;
         color: aliceblue;
     }
-    .customCard {
-        color: #152228;
+    .grid-container {
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+    .grid-item {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .profile-picture{
+        height: 100px;
+        width: 100px;
+    }
+    main{
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        margin-bottom: 20px;
+    } 
+    h1 {
+        padding: 0px;
+        margin: 0px; 
+        font-size: 3em;
+    }
+    #parent{
+        padding: 20px;
         background-color: aliceblue;
+        color: black;
+        height: 90%;
     }
-    .indent-left-sm{
-        margin-left: 15px;
+    #project a{
+        color: black;
     }
-    .profile-picture {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        margin-bottom: 10px;
+    a{
+        color: aliceblue;
     }
-    .name {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 5px;
+    #msg-box{
+        padding: 20px;
     }
-    .bio {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }   
-  </style>
+    @media screen and (max-width: 650px) {
+        .grid-container { grid-template-columns: 100%; }
+        h1 { font-size: 1.5em; }
+        #project { padding: 20px; }        
+    }
+    </style>
   <body>
 
-    <div class="container">
+    <main>
+        <div class="grid-container">
 
-        <div class="profile-card">
-            <img class="profile-picture" src="profile.jpg" alt="Profile Picture">
-            <div class="name">Moyin Koiki (MoeKy)</div>
-            <div class="bio">
-                On a mission to build useful products and share what I’ve learned with others.
+            <div class="grid-item" id="msg-box">
+                <header> <h1> Hello </h1> </header>
+                <small><i>On a mission to build useful products and share what I’ve learned with others.</i></small>            
                 <br><br>
-                <h3>PROJECTS</h3>
-                <hr>
+                <img class="profile-picture" src="profile.jpg" alt="Profile Picture"> <br></br>
+                My name is Moyin (or Moeky), and welcome to my page. I work as a technology and data science consultant.
+                Outside of work I enjoy coding, teaching people to code, and a host of other things.
             </div>
-          </div>
 
-        <div class="customCard card">
-            <div class="card-body">
-                <article>
-                    <header><b><a target="_blank" href="https://theletterdigest.com">The Letter Digest</a></b> &#128736</header>
-                    <p>
-                        The Letter Digest - provides you with Insights & Digests on your favorite newsletters.
-                    </p>
-                </article>
+            <div class="grid-item">
+                <div id="parent">
+                    <section id="project">
+                        <h3>PROJECTS</h3>
+                        <small>please click on a project to find out more information.</small>
+                        <ul>
+                            <li><a href="" id="tld">The Letter Digest &#128736</a></li>
+                            <li><a href="" id="ltc">Learn to code by solving problems (E-BOOK)</a></li>
+                        </ul>
+                    </section>
+                </div>
             </div>
+
         </div>
-        <br>
-        <div class="customCard card">
-            <div class="card-body">
-                <article>
-                    <header><b><a target="_blank" href="https://www.dropbox.com/s/xo3cec5uo6kpbsw/Learn-To-Code-By-Solving-Problem-Book-1-final.pdf?dl=0">Learn To Code By Solving Problem - Ebook (First Edition)</a></b></header>
-                    <p>
-                    I created this small digital e-book for beginners looking to take their coding journey to the next level.
-                    </p>
-                </article>
-            </div>
-          </div>
-        <br>
-    </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
