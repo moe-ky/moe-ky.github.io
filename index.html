@@ -15,49 +15,31 @@
         font-family: 'Lato', sans-serif;
         background-color: #152228;
         color: aliceblue;
+        padding-top: 100px;
+        padding-left: 200px;
+        padding-right: 200px;
+        font-size: 18px;
     }
     .grid-container {
       display: grid;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: 100%;
+      width: 80%;
     }
     .grid-item {
       font-size: 20px;
       margin-bottom: 20px;
     }
-    .profile-picture{
-        height: 100px;
-        width: 100px;
-    }
-    main{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    } 
-    h1 {
-        padding: 0px;
-        margin: 0px; 
-        font-size: 3em;
-    }
-    #parent{
-        padding: 20px;
-        background-color: aliceblue;
-        color: black;
-        height: 90%;
-    }
-    #project a{
-        color: black;
-    }
-    a{
-        color: aliceblue;
-    }
-    #msg-box{
-        padding: 20px;
-    }
+    a { color: aliceblue; }
     @media screen and (max-width: 650px) {
-        .grid-container { grid-template-columns: 100%; }
-        h1 { font-size: 1.5em; }
-        #project { padding: 20px; }        
+        .grid-container {
+            width: 100%;
+        }
+        body {
+            padding-top: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 16px;
+        }
     }
     </style>
   <body>
@@ -65,9 +47,9 @@
     <main>
         <div class="grid-container">
 
-            <div class="grid-item" id="msg-box">
-                <header> <h1> Hello </h1> </header>
-                <small><i>On a mission to build useful products and share what I’ve learned with others.</i></small>            
+            <div class="grid-item">
+                <header> <h1> WELCOME </h1> </header>
+                <small><i>I am on a mission to build useful products and share what I’ve learned with others.</i></small>            
                 <br><br>
                 <!-- <img class="profile-picture" src="profile.jpg" alt="Profile Picture"> <br></br> -->
                 My name is Moyin (or Moeky), and welcome to my page. I work as a technology and data science consultant.
@@ -77,8 +59,8 @@
             <div class="grid-item">
                 <div id="parent">
                     <section id="project">
-                        <h3>PROJECTS</h3>
-                        <small>please click on a project to find out more information.</small>
+                        <p>Projects - <small>please click on a project to find out more information.</small></p>
+
                         <ul>
                             <li><a href="" id="tld">The Letter Digest &#128736</a></li>
                             <li><a href="" id="ltc">Learn to code by solving problems (E-BOOK)</a></li>
@@ -86,6 +68,9 @@
                     </section>
                 </div>
             </div>
+
+            <div class="grid-item" id="msg-box">
+            </div>            
 
         </div>
     </main>
