@@ -13,23 +13,28 @@
   <style>
     body{
         font-family: 'Lato', sans-serif;
-        background-color: #152228;
-        color: aliceblue;
-        padding-top: 100px;
+        font-size: 18px;
+        background-color: #181823;
+        color: #ffffff;
         padding-left: 200px;
         padding-right: 200px;
-        font-size: 18px;
+        padding-top: 100px;
     }
     .grid-container {
       display: grid;
       grid-template-columns: 100%;
-      width: 80%;
+      height: 70vh;
+
+      -webkit-box-shadow: 10px 10px 9px -1px rgba(0,0,0,0.51);
+      -moz-box-shadow: 10px 10px 9px -1px rgba(0,0,0,0.51);
+      box-shadow: 10px 10px 9px -1px rgba(0,0,0,0.51);      
     }
     .grid-item {
       font-size: 20px;
-      margin-bottom: 20px;
     }
+
     a { color: aliceblue; }
+
     @media screen and (max-width: 650px) {
         .grid-container {
             width: 100%;
@@ -41,6 +46,7 @@
             font-size: 16px;
         }
     }
+
     </style>
   <body>
 
@@ -48,15 +54,16 @@
         <div class="grid-container">
 
             <div class="grid-item">
+              <img class="profile-picture" src="profile.jpg" alt="Profile Picture" height="100px" width="100px">
                 <header> <h1> WELCOME </h1> </header>
-                <small><i>I am on a mission to build useful products and share what I’ve learned with others.</i></small>            
-                <br><br>
-                <!-- <img class="profile-picture" src="profile.jpg" alt="Profile Picture"> <br></br> -->
-                My name is Moyin (or Moeky), and welcome to my page. I work as a technology and data science consultant.
-                Outside of work I enjoy coding, teaching people to code, and a host of other things.
+                <p>
+                    My name is Moyin (or Moeky), and I work as a technology and data science consultant.
+                    Outside of work I enjoy coding, teaching people to code, and a host of other things.
+                    <small><i>I am on a mission to build useful products and share what I’ve learned with others.</i></small>            
+                </p>
             </div>
 
-            <div class="grid-item">
+            <!-- <div class="grid-item">
                 <div id="parent">
                     <section id="project">
                         <p>Projects - <small>please click on a project to find out more information.</small></p>
@@ -70,7 +77,7 @@
             </div>
 
             <div class="grid-item" id="msg-box">
-            </div>            
+            </div>             -->
 
         </div>
     </main>
