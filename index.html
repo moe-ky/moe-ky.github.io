@@ -6,70 +6,123 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <title>Moeky</title>
   </head>
   <style>
     body{
-        font-family: 'Lato', sans-serif;
-        background-color: #152228;
-        color: aliceblue;
-        padding-top: 100px;
-        padding-left: 200px;
-        padding-right: 200px;
-        font-size: 18px;
+      font-family: "Inter", sans-serif;
+      font-size: 17px;
+      /* background-color: #181823;
+      color: #ffffff; */
+      padding-left: 200px;
+      padding-right: 200px;
+      padding-top: 100px;
     }
+
     .grid-container {
       display: grid;
-      grid-template-columns: 100%;
-      width: 80%;
+      grid-template-columns: repeat(2,1fr);
+      height: auto;
     }
     .grid-item {
-      font-size: 20px;
-      margin-bottom: 20px;
+      padding: 20px;
     }
-    a { color: aliceblue; }
-    @media screen and (max-width: 650px) {
+    .profile-picture{
+      padding-left: 20px;
+    }
+
+    ul, li {
+      list-style-type: none; 
+      list-style-position:inside;
+      margin:0;
+      padding:0;      
+    }
+
+    .project{
+      background-color: #111F29;
+      color: aliceblue;
+    }
+    .project-item > a{
+      color: aliceblue;
+    }
+    .project-item
+    {
+      padding-bottom: 20px;
+    }
+
+    .contact{
+      grid-column: 1 / -1;
+    }
+
+    .contact li {
+    display: inline;
+    float: left;
+    padding-right: 10px;
+}    
+
+    @media screen and (max-width: 1000px) {
         .grid-container {
             width: 100%;
+            grid-template-columns: repeat(1,1fr);
         }
         body {
             padding-top: 30px;
             padding-left: 20px;
             padding-right: 20px;
             font-size: 16px;
+            line-height: 20px;
         }
     }
+
     </style>
   <body>
 
     <main>
-        <div class="grid-container">
+      
+      <img class="profile-picture" src="profile.jpg" alt="Profile Picture" height="100px" width="100px">
+      <div class="grid-container">
 
-            <div class="grid-item">
-                <header> <h1> WELCOME </h1> </header>
-                <small><i>I am on a mission to build useful products and share what I’ve learned with others.</i></small>            
-                <br><br>
-                <!-- <img class="profile-picture" src="profile.jpg" alt="Profile Picture"> <br></br> -->
-                My name is Moyin (or Moeky), and welcome to my page. I work as a technology and data science consultant.
-                Outside of work I enjoy coding, teaching people to code, and a host of other things.
+            <div class="grid-item welcome">
+              <header> <h1> WELCOME </h1> </header>
+              <p>
+              </p>
+              <p>
+                Hi There,
+                people call me Moyin (or Moeky) and for the last 6 years I have been working professionally as a technology and data science consultant at a global consulting firm.
+                <br><br>My background is in computer and data science, and I am very interested in the use of technology to solve business problems. 
+                Outside of work I enjoy coding, building tools, helping people grow (via mentoring, teaching or coaching), and a host of other things.          
+              </p>
+              <b><small>What i'm focusing on these days => building useful products and share what I’ve learned with others, to help them grow.</small></b>
             </div>
 
-            <div class="grid-item">
-                <div id="parent">
-                    <section id="project">
-                        <p>Projects - <small>please click on a project to find out more information.</small></p>
-
-                        <ul>
-                            <li><a href="" id="tld">The Letter Digest &#128736</a></li>
-                            <li><a href="" id="ltc">Learn to code by solving problems (E-BOOK)</a></li>
-                        </ul>
-                    </section>
-                </div>
+            <div class="grid-item project"> 
+              <header> <h1> PROJECTS </h1> </header>
+              <div id="parent">
+                  <section id="project">
+                      <ul>
+                          <li class="project-item"><a href="https://theletterdigest.com" target="_blank">The Letter Digest &#128736</a>: 
+                          <br>Utilizing generative AI technologies, I created a platform that presents summarized key insights from high quality newsletters. 
+                          These newsletters are sourced from a collection of top authors.</li>
+                          <li class="project-item"><a href="https://www.dropbox.com/s/xo3cec5uo6kpbsw/Learn-To-Code-By-Solving-Problem-Book-1-final.pdf?dl=0" target="_blank">Learn to code by solving problems (E-BOOK)</a>:
+                            <br>I created this small digital e-book for beginners looking to take their coding journey to the next level.
+                            This is my first attempt at an e-book and I look forward to producing more content like this, to help others on their journey.</li>
+                      </ul>
+                  </section>
+              </div>
             </div>
 
-            <div class="grid-item" id="msg-box">
+            <div class="grid-item contact"> 
+              <header> <h1> CONTACT </h1> </header>
+              <p>Get in touch and lets connect!</p>
+              <div id="parent">
+                  <section id="">
+                      <ul>
+                          <li class="contact-item"><a href="https://twitter.com/moeky" target="_blank">X (Twitter)</a></li>
+                          <li class="contact-item"><a href="https://www.linkedin.com/in/moyin-k/" target="_blank">LinkedIn</a></li>
+                      </ul>
+                  </section>
+              </div>
             </div>            
 
         </div>
