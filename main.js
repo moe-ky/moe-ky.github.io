@@ -24,10 +24,10 @@ projectMapping = {
     `
 }
 document.addEventListener("DOMContentLoaded", () => {
-    projects.forEach((project) => {
-        document.getElementById(project).addEventListener("click", (e)=>{
-            e.preventDefault();
-            document.getElementById("msg-box").innerHTML = projectMapping[project]
-        })
-    })
+    // projects.forEach((project) => {
+    //     document.getElementById(project).addEventListener("click", (e)=>{
+    //         e.preventDefault();
+    //         document.getElementById("msg-box").innerHTML = projectMapping[project]
+    //     })
+    // })
   });
