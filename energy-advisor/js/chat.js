@@ -44,6 +44,38 @@ const populateChatWindow = (message={}) => {
 
 }
 
+const processInput = async () => {
+    const chatInputDiv = document.getElementById('chat-input');
+    localStorage.setItem("current-chat-input", JSON.stringify(chatInputDiv.value.trim())) // doing this to reduce lag when person sends message
+    chatInputDiv.value = "";
+
+    const chatInputTextValue = JSON.parse(localStorage.getItem("current-chat-input"))
+
+    if (chatInputTextValue.length === 0 || chatInputTextValue === ''){
+        alert("please enter a message!")
+        return;
+    }
+
+    console.log("new message", chatInputTextValue)
+
+    populateChatWindow({role:"rep", message: chatInputTextValue})
+
+    console.log("making call to bot...")
+    const chatInteractions = JSON.parse(localStorage.getItem("chat-interactions"))
+    const customerProfile = JSON.parse(localStorage.getItem("customer-profile"))
+    console.log("current interaction...", chatInteractions)
+
+    const call = await fetch (`https://api-sender.theletterdigest.com/customer-service/get-message`, { 
+        method: 'POST', 
+        credentials: 'include', 
+        body:JSON.stringify({ messages: chatInteractions, customerProfileId: customerProfile })
+    })
+
+    const { response, continueChat } = await call.json()
+    populateChatWindow({role:"customer", message: response})
+    console.log("model response", response, "continue chat", continueChat)
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const chatInteractions = localStorage.getItem("chat-interactions")
@@ -59,39 +91,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     // checkSessionId()
     populateChatWindow()
     document.getElementById("send-message").addEventListener("click", async ()=> {
-
-        const chatInputDiv = document.getElementById('chat-input');
-        localStorage.setItem("current-chat-input", JSON.stringify(chatInputDiv.value.trim())) // doing this to reduce lag when person sends message
-        chatInputDiv.value = "";
-
-        const chatInputTextValue = JSON.parse(localStorage.getItem("current-chat-input"))
-
-        if (chatInputTextValue.length === 0 || chatInputTextValue === ''){
-            alert("please enter a message!")
-            return;
-        }
-
-        console.log("new message", chatInputTextValue)
-
-        populateChatWindow({role:"rep", message: chatInputTextValue})
-
-        console.log("making call to bot...")
-        const chatInteractions = JSON.parse(localStorage.getItem("chat-interactions"))
-        const customerProfile = JSON.parse(localStorage.getItem("customer-profile"))
-        console.log("current interaction...", chatInteractions)
-
-        const call = await fetch (`https://api-sender.theletterdigest.com/customer-service/get-message`, { 
-            method: 'POST', 
-            credentials: 'include', 
-            body:JSON.stringify({ messages: chatInteractions, customerProfileId: customerProfile })
-        })
-
-        const { response, continueChat } = await call.json()
-        populateChatWindow({role:"customer", message: response})
-        console.log("model response", response, "continue chat", continueChat)
-
-        
+        await processInput();
     })
+
+    // Get the input field
+    var input = document.getElementById("chat-input");
+    // Execute a function when the user presses a key on the keyboard
+    input.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("send-message").click();
+    }});    
 
     document.getElementById("restart").addEventListener("click", ()=> {
         localStorage.setItem("chat-interactions", JSON.stringify([]));
