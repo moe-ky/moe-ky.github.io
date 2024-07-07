@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.setItem("chat-interactions", JSON.stringify([]))
     }
 
-    checkSessionId()
+    // checkSessionId()
     populateChatWindow()
     document.getElementById("send-message").addEventListener("click", async ()=> {
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const call = await fetch (`https://api-sender.theletterdigest.com/customer-service/get-message`, { 
             method: 'POST', 
             credentials: 'include', 
-            body:JSON.stringify({ messages: chatInteractions, customerProfileId: 3 })
+            body:JSON.stringify({ messages: chatInteractions, customerProfileId: 4 })
         })
 
         const { response, continueChat } = await call.json()
