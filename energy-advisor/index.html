@@ -1,29 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Energy Advisor Session</title>
-    <link rel="stylesheet" href="css/chat-windows.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            Customer Service Chat <br>
-            Please start the conversation asking how you can help the customer. <br>
-            You will be given a customer with a predefined profile, [hint] - try to find out more about them. 
-            <!-- <span id="session-id"></span> -->
-        </div>
-        <div id="chat" class="chat-messages">
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chat-input" placeholder="Type your message here, and press enter or return key...">
-          </div>
-          <button id="send-message" class="btn btn-sm btn-primary">Send</button>
-          <button id="restart" class="btn btn-sm btn-danger">Restart</button>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Advisor App</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4CA2FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  .title {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #007bff;
+    text-transform: uppercase;
+  }
+  .card {
+    margin: 20px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card-title {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  .card-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .card-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .card-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Energy Advisor</div>
+    
+    <div class="card">
+      <div class="card-title">Customer Service</div>
+      <div class="card-description">Play the role of an energy representative. See if you can help with the customer query.</div>
+      <a href="./customer-service.html" class="card-button">Go to Customer Service App</a>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/chat.js"></script>
+
+    <div class="card">
+      <div class="card-title">Prompt Engineer</div>
+      <div class="card-description">Play the role of a prompt engineer. See if you can come up with an effective prompt for the given domain.</div>
+      <a href="./prompt.html" class="card-button">Go to Prompt Engineering App</a>
+    </div>
+    
+    <!-- Add more cards for other services if needed -->
+    
+  </div>
 </body>
 </html>

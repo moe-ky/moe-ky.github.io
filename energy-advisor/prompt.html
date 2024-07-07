@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Split Box with Text Area and Submit Button</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #4CA2FF; /* Changed background color to match the provided theme */
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 14px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 80vh;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 50px;
+    overflow: hidden;
+  }
+  .left-panel, .right-panel {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+  }
+  .left-panel {
+    background-color: #f8f9fa; /* Changed background color to match the provided theme */
+    border-right: 1px solid #ddd; /* Added border between left and right panels */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align items vertically */
+  }
+  .right-panel {
+    background-color: #007bff; /* Changed background color to match the provided theme */
+    color: white;
+  }
+  textarea {
+    width: 100%;
+    height: calc(100% - 40px); /* Adjust height to accommodate the button */
+    border: none;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .submit-button {
+    padding: 10px 20px;
+    margin-top: 10px; /* Added margin to separate from textarea */
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end; /* Align button to the bottom of left panel */
+  }
+
+  .card {
+    color: black;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+        margin: 0 0 10px;
+    }
+    .card p {
+        margin: 5px 0;
+    }  
+
+  /* Media query for small screens */
+  @media screen and (max-width: 600px) {
+    body {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .container {
+      height: auto;
+      font-size: 12px;
+    }
+    .left-panel, .right-panel {
+      padding: 10px;
+    }
+    .submit-button {
+      margin-top: 5px;
+    }    
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <textarea id="textInput" placeholder="Please enter prompt here to be evaluated..."></textarea>
+      <button id="submit-rating" class="submit-button">Evaluate Prompt</button>
+    </div>
+    <div class="right-panel">
+      <!-- Placeholder content for the right panel -->
+      <h2>Evaluation</h2>
+      <p>This is the right panel content.</p>
+      <div id="right-panel"></div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/promptRating.js"></script>
+</body>
+</html>
