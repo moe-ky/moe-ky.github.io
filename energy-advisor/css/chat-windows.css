@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-top: 50px;
+    margin-top: 80px; /* Space below the fixed navbar */
 }
 .chat-header {
     padding: 10px;
@@ -81,14 +81,30 @@
     display: none;
 }
 
+.navbar {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
 @media screen and (max-width: 600px) {
     body {
         padding-left: 10px;
         padding-right: 10px;
-    }
-    .chat-container {
-        margin-top: 10px;
-        font-size: 12px;
     }
     .chat-header {
         font-size: 14px;

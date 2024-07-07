@@ -9,32 +9,55 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #4CA2FF;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
+    /* padding: 20px; */
+  }
+  .navbar {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
   }
   .container {
-    text-align: center;
-    padding: 20px;
+    max-width: 100%;
+    padding: 80px 20px 20px 20px; /* Adjust padding for title to be closer to the top */
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.1); */
+    margin-top: 80px; /* Space below the fixed navbar */
   }
   .title {
     font-size: 36px;
     margin-bottom: 30px;
     color: #007bff;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   .card {
-    margin: 20px;
+    flex: 0 1 calc(45% - 40px);
+    margin: 5px;
     padding: 30px;
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    text-align: left;
   }
   .card:hover {
     transform: translateY(-5px);
@@ -64,20 +87,31 @@
   .card-button:hover {
     background-color: #0056b3;
   }
+
+  @media screen and (max-width: 768px) {
+    .card {
+      flex: 0 1 calc(100% - 40px);
+    }
+    .container {
+    padding: 80px 10px 20px 10px; /* Adjust padding for title to be closer to the top */
+    }
+  }
 </style>
 </head>
 <body>
+  <div class="navbar">
+    <a href="/energy-advisor">Energy Advisor</a>
+  </div>
   <div class="container">
-    <div class="title">Energy Advisor</div>
     
     <div class="card">
-      <div class="card-title">Customer Service</div>
+      <div class="card-title">Customer Service &#128187;</div>
       <div class="card-description">Play the role of an energy representative. See if you can help with the customer query.</div>
       <a href="./customer-service.html" class="card-button">Go to Customer Service App</a>
     </div>
 
     <div class="card">
-      <div class="card-title">Prompt Engineer</div>
+      <div class="card-title">Prompt Engineer &#128640;</div>
       <div class="card-description">Play the role of a prompt engineer. See if you can come up with an effective prompt for the given domain.</div>
       <a href="./prompt.html" class="card-button">Go to Prompt Engineering App</a>
     </div>
