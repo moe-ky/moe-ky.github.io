@@ -76,6 +76,10 @@
     cursor: pointer;
 }
 
+#send-message{
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     body {
         padding-left: 10px;
