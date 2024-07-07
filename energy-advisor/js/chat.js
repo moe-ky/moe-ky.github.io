@@ -2,6 +2,9 @@ let chatInteractions = []
 // chatInteractions.push({role: "rep", message: "Hey there, how can i help you today?",})
 // chatInteractions.push({role: "customer", message: "Hello, I need help with my order.",})
 
+function getRandomNumber() {
+    return Math.floor(Math.random() * 10) + 1;
+  }
 
 const checkSessionId = () =>{
     // check if session exists.
@@ -48,12 +51,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.setItem("chat-interactions", JSON.stringify([]))
     }
 
+    const customerProfile = localStorage.getItem("customer-profile")
+    if (!customerProfile || customerProfile === null){
+        localStorage.setItem("customer-profile", JSON.stringify(getRandomNumber()))
+    }
+
     // checkSessionId()
     populateChatWindow()
     document.getElementById("send-message").addEventListener("click", async ()=> {
 
-        const chatInput = document.getElementById('chat-input');
-        const chatInputTextValue = chatInput.value.trim()
+        const chatInputDiv = document.getElementById('chat-input');
+        localStorage.setItem("current-chat-input", JSON.stringify(chatInputDiv.value.trim())) // doing this to reduce lag when person sends message
+        chatInputDiv.value = "";
+
+        const chatInputTextValue = JSON.parse(localStorage.getItem("current-chat-input"))
 
         if (chatInputTextValue.length === 0 || chatInputTextValue === ''){
             alert("please enter a message!")
@@ -66,23 +77,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         console.log("making call to bot...")
         const chatInteractions = JSON.parse(localStorage.getItem("chat-interactions"))
+        const customerProfile = JSON.parse(localStorage.getItem("customer-profile"))
         console.log("current interaction...", chatInteractions)
 
         const call = await fetch (`https://api-sender.theletterdigest.com/customer-service/get-message`, { 
             method: 'POST', 
             credentials: 'include', 
-            body:JSON.stringify({ messages: chatInteractions, customerProfileId: 4 })
+            body:JSON.stringify({ messages: chatInteractions, customerProfileId: customerProfile })
         })
 
         const { response, continueChat } = await call.json()
         populateChatWindow({role:"customer", message: response})
         console.log("model response", response, "continue chat", continueChat)
 
-        chatInput.value = "";
+        
     })
 
     document.getElementById("restart").addEventListener("click", ()=> {
-        localStorage.setItem("chat-interactions", JSON.stringify([]))
+        localStorage.setItem("chat-interactions", JSON.stringify([]));
+        localStorage.removeItem("customer-profile");
+        localStorage.removeItem("current-chat-input");
+        alert("chat reset and new profile selected");
         location.reload();
     })
 
