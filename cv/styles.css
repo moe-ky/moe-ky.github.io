@@ -1,0 +1,109 @@
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 17px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 100px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+}
+
+.grid-item {
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #111F29;
+    margin-top: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.job {
+    margin-bottom: 20px;
+}
+
+.job h4 {
+    margin: 0 0 5px 0;
+}
+
+.job p {
+    margin: 0;
+    font-style: italic;
+}
+
+.job ul {
+    margin-top: 10px;
+}
+
+.project {
+    background-color: #111F29;
+    color: aliceblue;
+}
+
+.project-item > a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.project-item {
+    padding-bottom: 20px;
+}
+
+.contact {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.contact li {
+    display: inline;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .grid-container {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    body {
+        padding-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
