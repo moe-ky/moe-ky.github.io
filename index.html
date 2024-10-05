@@ -12,24 +12,54 @@
   <style>
     body{
       font-family: "Inter", sans-serif;
-      font-size: 17px;
+      font-size: 14px;
       /* background-color: #181823;
       color: #ffffff; */
-      padding-left: 200px;
-      padding-right: 200px;
-      padding-top: 100px;
+      padding-left: 150px;
+      padding-right: 150px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .align-center {
+      text-align: center;
     }
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(1,1fr);
-      height: auto;
-    }
-    .grid-item {
+      grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+      grid-gap: 20px;
       padding: 20px;
+      border-radius: 25px;
     }
+
+    .grid-item {
+    }
+
+    .span-2{
+      grid-column: 2 / span 2; /* make this item span two columns */ 
+    }
+
+    .profile{
+      margin-bottom: 10px;
+      -webkit-box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
+      -moz-box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
+      box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
+    }
+
+    .contact, .summary {
+      grid-column: 1 / -1;
+    }
+
     .profile-picture{
-      padding-left: 20px;
+      border-radius: 25px;
+    }
+
+    .pr-pic {
+      /* background-image: url('profile.jpg');
+      background-size:contain;
+      background-position: 50% 50%;
+      border-radius: 5%; */
     }
 
     ul, li {
@@ -51,25 +81,26 @@
       padding-bottom: 20px;
     }
 
-    .contact{
-      grid-column: 1 / -1;
-    }
-
-    .contact li {
+  .contact li {
     display: inline;
     float: left;
     padding-right: 10px;
-}    
+  }   
 
     @media screen and (max-width: 1000px) {
         .grid-container {
-            width: 100%;
             grid-template-columns: repeat(1,1fr);
         }
+        
+        .span-2{
+          grid-column: 1; /* make this item span two columns */ 
+        }
+
+
         body {
             padding-top: 30px;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
             font-size: 16px;
             line-height: 20px;
         }
@@ -80,54 +111,43 @@
 
     <main>
       
-      <img class="profile-picture" src="profile.jpg" alt="Profile Picture" height="100px" width="100px">
-      <div class="grid-container">
+      <div class="grid-container profile">
+          <div class="grid-item align-center pr-pic">
+            <img class="profile-picture" src="profile.jpg" alt="Profile Picture" height="294px" width="294px">
+          </div>
+          <div class="grid-item span-2">
+            <h3>Moeky (moʊki)</h3>
+            <p>
+              I'm passionate about where business, technology, and data meet, and I love being right in the middle of it all. With a hands-on technical background, I thrive on using tech to solve real business problems and drive meaningful results.
+            </p>
+            <p>
+              Beyond the tech, I’ve got solid experience working with stakeholders, helping to bridge the gap between the technical and business sides to create real value.
+            </p>
+            <p>
+              And of course, data ties everything together—especially when combined with modern tools like AI to help businesses make smarter, data-driven decisions.
+            </p>
 
-            <div class="grid-item welcome">
-              <header> <h1> WELCOME </h1> </header>
-              <p>
-              </p>
-              <p>
-                Hi There, the name is Moyin (or Moeky if you came via X). Depending on which day you speak to me I could have one of many hats on e.g. Engineer, Consultant, Data Scientist etc..
-                And for the past 6 years I have enjoyed wearing these hats because I enjoy solving problems. 
-                
-                <br><br>
-                I am very interested in the use of technology to solve business problems and outside of work I enjoy coding, building tools, helping people grow (via mentoring, teaching or coaching), and a host of other things.          
-              </p>
-              <b><small>What i'm focusing on these days => using my skills to help people and building things online.</small></b>
-            </div>
-
-            <div class="grid-item project"> 
-              <header> <h1> PROJECTS </h1> </header>
-              <div id="parent">
-                  <section id="project">
-                      <ul>
-                          <li class="project-item"><a href="https://theletterdigest.com" target="_blank">The Letter Digest &#128736</a>: 
-                            <p>
-                              Problem: Too many newsletters to get insights from, too little time.
-                              <br><br>Solution: A platform that provides summarized insights from top newsletters, around the world.
-                              <br><br>Approach: Utilizing LLM models and a combination of AWS resources to serve the solution to users. 
-                            </p>
-                          </li>
-                      </ul>
-                  </section>
-              </div>
-            </div>
-
-            <div class="grid-item contact"> 
-              <header> <h1> CONTACT </h1> </header>
-              <p>Get in touch and lets connect!</p>
-              <div id="parent">
-                  <section id="">
-                      <ul>
-                          <li class="contact-item"><a href="https://twitter.com/moeky" target="_blank">X (Twitter)</a></li>
-                          <li class="contact-item"><a href="https://www.linkedin.com/in/moyin-k/" target="_blank">LinkedIn</a></li>
-                      </ul>
-                  </section>
-              </div>
-            </div>            
-
+            <div id="parent">
+              <p>let's get in touch</p>
+              <a href="https://twitter.com/moeky" target="_blank">X (Twitter)</a> | <a href="https://www.linkedin.com/in/moyin-k/" target="_blank">LinkedIn</a>
+          </div>            
+          </div>
         </div>
+        
+        <div class="grid-container profile">
+          <div class="grid-item align-center pr-pic">
+            <img class="profile-picture" src="tld-logo.jpg" alt="Profile Picture" height="294px" width="294px">
+          </div>
+          <div class="grid-item span-2">  
+            <header> <h1> PROJECTS </h1> </header>
+            <p>
+              We are overwhelmed by information in today's digital age, often struggling to discern what matters. 
+              <br><br>This project seeks to address the issue of information overload, leveraging technology to make data more manageable and meaningful.              
+            </p>
+            <a href="https://theletterdigest.com" target="_blank">The Letter Digest &#128736</a>
+          </div>
+        </div>
+
     </main>
 
     <script type="text/javascript" src="main.js"></script>
