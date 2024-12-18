@@ -8,147 +8,217 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <title>Moeky</title>
-  </head>
-  <style>
-    body{
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-      /* background-color: #181823;
-      color: #ffffff; */
-      padding-left: 150px;
-      padding-right: 150px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 60px 0px 0px 0px;
+        padding: 0px;
+        color: #3E5879;
+      }
 
-    .align-center {
-      text-align: center;
-    }
+      /* Sticky Navigation Bar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px; /* Height of the navbar */
+        background-color: #213555;
+        color: #F5EFE7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
 
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-      grid-gap: 20px;
-      padding: 20px;
-      border-radius: 25px;
-    }
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
 
-    .grid-item {
-    }
+      .navbar a:hover {
+        color: #ffcc00;
+      }
 
-    .span-2{
-      grid-column: 2 / span 2; /* make this item span two columns */ 
-    }
+      /* Section Styles */
+      section {
+        height: calc(100vh - 120px); /* Full-screen height minus navbar height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+      }
 
-    .profile{
-      margin-bottom: 10px;
-      -webkit-box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
-      -moz-box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
-      box-shadow: 3px 7px 26px -7px rgba(0,0,0,0.75);
-    }
+      #profile {
+        background-color: #F5EFE7;
+      }
 
-    .contact, .summary {
-      grid-column: 1 / -1;
-    }
+      #projects {
+        background-color: #213555;
+        color: #F5EFE7;
+      }
 
-    .profile-picture{
-      border-radius: 25px;
-    }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    .pr-pic {
-      /* background-image: url('profile.jpg');
-      background-size:contain;
-      background-position: 50% 50%;
-      border-radius: 5%; */
-    }
+      .horizontal {
+        display: inline-block;
+        margin-right: 10px;
+      }
 
-    ul, li {
-      list-style-type: none; 
-      list-style-position:inside;
-      margin:0;
-      padding:0;      
-    }
+      /* Profile Section */
+      .profile-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        height: auto;
+      }
 
-    .project{
-      background-color: #111F29;
-      color: aliceblue;
-    }
-    .project-item > a{
-      color: aliceblue;
-    }
-    .project-item
-    {
-      padding-bottom: 20px;
-    }
+      .profile-container img {
+        border-radius: 5%;
+        margin-bottom: 20px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      }
 
-  .contact li {
-    display: inline;
-    float: left;
-    padding-right: 10px;
-  }   
+      /* Projects Section */
+      .projects-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        height: 100%;
+        overflow: hidden; /* Prevent the entire section from scrolling */
+      }
 
-    @media screen and (max-width: 1000px) {
-        .grid-container {
-            grid-template-columns: repeat(1,1fr);
-        }
-        
-        .span-2{
-          grid-column: 1; /* make this item span two columns */ 
-        }
+      .projects-container header {
+        font-size: 24px;
+        font-weight: bold;
+      }
 
+      .project-list {
+        height: calc(100% - 60px); /* Full height minus header space */
+        overflow-y: auto; /* Enable vertical scrolling for projects */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 5px 0;
+      }
 
-        body {
-            padding-top: 30px;
-            padding-left: 10px;
-            padding-right: 10px;
-            font-size: 16px;
-            line-height: 20px;
-        }
-    }
+      .project {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        background-color: #D8C4B6;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
 
+      .project img {
+        border-radius: 10px;
+        height: 70px;
+        width: 70px;
+        object-fit: cover; /* Ensure the image fits without distortion */
+      }
+
+      .project a {
+        color: #213555;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .project a:hover {
+        text-decoration: underline;
+      }
+
+      .project p {
+        font-size: 14px;
+        color: #213555;
+        margin: 0;
+      }
+
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Scrollbar styling (optional) */
+      .project-list::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .project-list::-webkit-scrollbar-thumb {
+        background-color: #444;
+        border-radius: 5px;
+      }
+
+      .project-list::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+      }
     </style>
+  </head>
   <body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <div class="logo">
+        <a href="#profile">Moeky</a>
+      </div>
+      <div class="nav-links">
+        <a href="#profile">Profile</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </div>
 
-    <main>
-      
-      <div class="grid-container profile">
-          <div class="grid-item align-center pr-pic">
-            <img class="profile-picture" src="profile.jpg" alt="Profile Picture" height="294px" width="294px">
-          </div>
-          <div class="grid-item span-2">
-            <h3>Moeky (moʊki)</h3>
-            <p>
-              I'm passionate about where business, technology, and data meet, and I love being right in the middle of it all. With a hands-on technical background, I thrive on using tech to solve real business problems and drive meaningful results.
-            </p>
-            <p>
-              Beyond the tech, I’ve got solid experience working with stakeholders, helping to bridge the gap between the technical and business sides to create real value.
-            </p>
-            <p>
-              And of course, data ties everything together—especially when combined with modern tools like AI to help businesses make smarter, data-driven decisions.
-            </p>
+    <!-- Profile Section -->
+    <section id="profile">
+      <div class="profile-container">
+        <img src="profile.jpg" alt="Profile Picture" height="150px" width="150px">
+        <h3>Moeky (moʊki)</h3>
+        <p>
+          I'm passionate about where business, technology, and data meet, and I love being right in the middle of it all. With a hands-on technical background, I thrive on using tech to solve real business problems and drive meaningful results.
+        </p>
+        <p>
+          Beyond the tech, I’ve got solid experience working with stakeholders, helping to bridge the gap between the technical and business sides to create real value.
+          And of course, data ties everything together—especially when combined with modern tools like AI to help businesses make smarter, data-driven decisions.
+        </p>
+        <p>Let's get in touch:
+          <ul>
+            <li class="horizontal"><a href="https://twitter.com/moeky" target="_blank">X (Twitter)</a></li>
+            <li class="horizontal"><a href="https://www.linkedin.com/in/moyin-k/" target="_blank">LinkedIn</a></li>
+          </ul>          
+        </p>
+      </div>
+    </section>
 
-            <div id="parent">
-              <p>let's get in touch</p>
-              <a href="https://twitter.com/moeky" target="_blank">X (Twitter)</a> | <a href="https://www.linkedin.com/in/moyin-k/" target="_blank">LinkedIn</a>
-          </div>            
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="projects-container">
+        <header>
+          <h3>PROJECTS</h3>
+        </header>
+        <p>
+          I like to work on and tinker with ideas whenever I get the chance, and below is where I'll share some of my more, less, chaotic ideas.
+          And if you are versed in twitter (X) speak - I like concept of building in public and over time, so whenever I get some time and space I put a couple things together here and there (helps keeps the skills sharp).
+        </p>
+        <div class="project-list">
+          <div class="project">
+            <img src="tld-logo.jpg" alt="Project Logo" height="70px" width="70px">
+            <p>
+              <a href="https://ltrdigest.com" target="_blank">The Letter Digest &#128736 (WIP)</a> <br>
+              Exploring the use of llm technologies to reduce information overload in our daily email communications.
+              <b>Click title above to visit project.</b>
+            </p>
           </div>
+          <!-- Add more projects as needed -->
         </div>
-        
-        <div class="grid-container profile">
-          <div class="grid-item align-center pr-pic">
-            <img class="profile-picture" src="tld-logo.jpg" alt="Profile Picture" height="294px" width="294px">
-          </div>
-          <div class="grid-item span-2">  
-            <header> <h3> PROJECT - ltrDigest </h3> </header>
-            <p>
-              Having fun using llm's to reduce brain drain and make our emails more insightful.              
-            </p>
-            <a href="https://ltrdigest.com" target="_blank">The Letter Digest &#128736</a>
-          </div>
-        </div>
-
-    </main>
-
-    <script type="text/javascript" src="main.js"></script>
+      </div>
+    </section>
   </body>
 </html>
