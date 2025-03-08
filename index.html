@@ -46,7 +46,7 @@
 
       /* Section Styles */
       section {
-        height: calc(100vh - 120px); /* Full-screen height minus navbar height */
+        height: calc(80vh - 120px); /* Full-screen height minus navbar height */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,12 +209,22 @@
         </p>
         <div class="project-list">
           <div class="project">
+            <img src="tcb-logo.jpg" alt="Project Logo" height="70px" width="70px">
+            <p>
+              <strong><a href="https://thecontentbench.com" target="_blank">The Content Bench 🛋 (WIP)</a></strong><br>
+              <strong>Aim:</strong> Build a collection of AI tools people can utilize to add values in their lives <br>
+              <strong>How:</strong> Leveraging various modern techniques and technologies such as llm's<br>
+              <strong>Tech Stack:</strong> Various AWS services (Lambdas, s3 buckets, dynamo tables, SES, etc.), Terraform, Github Actions
+          </p>            
+          </div>
+          <div class="project">
             <img src="tld-logo.jpg" alt="Project Logo" height="70px" width="70px">
             <p>
-              <a href="https://ltrdigest.com" target="_blank">The Letter Digest &#128736 (WIP)</a> <br>
-              Exploring the use of llm technologies to reduce information overload in our daily email communications.
-              <b>Click title above to visit project.</b>
-            </p>
+                <strong>Letter Digest 🗑️ (decommissioned)</strong><br>
+                <strong>Aim:</strong> Reduce information overload when dealing with newsletters.<br>
+                <strong>How:</strong> Read newsletter emails sent to a user, via a unique email address. Process the emails into a summary email sent out to the user.<br>
+                <strong>Tech Stack:</strong> Various AWS services (Lambdas, s3 buckets, dynamo tables, SES, etc.), Terraform, Github Actions
+            </p>        
           </div>
           <!-- Add more projects as needed -->
         </div>
