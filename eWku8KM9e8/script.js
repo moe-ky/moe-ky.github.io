@@ -45,35 +45,26 @@ const content = [
     class: "hymn",
     html: `
       <div class="scrollable-block">
-        <p>
-          Lead us, heavenly Father, lead us<br>
-          through this world's tempestuous sea;<br>
-          guard us, guide us, keep us, feed us<br>
-          for your help is full and free,<br>
-          here possessing every blessing<br>
-          if our God our Father be.
-        </p>
-        <br>
-        <p>
-          Saviour, by your grace restore us -<br>
-          all our weaknesses are plain;<br>
-          you have lived on earth before us,<br>
-          you have felt our grief and pain:<br>
-          tempted, taunted, yet undaunted,<br>
-          from the depths you rose again.
-        </p>
-        <br>
-        <p>
-          Spirit of our God, descending,<br>
-          fill our hearts with holy peace;<br>
-          love with every passion blending,<br>
-          pleasure that can never cease:<br>
-          thus provided, pardoned, guided,<br>
-          ever shall our joys increase.
-        </p>
-      </div>
-    `
-  },    
+        <p>Lead us, heavenly Father, lead us<br>
+        through this world's tempestuous sea;<br>
+        guard us, guide us, keep us, feed us<br>
+        for your help is full and free,<br>
+        here possessing every blessing<br>
+        if our God our Father be.</p><br>
+        <p>Saviour, by your grace restore us -<br>
+        all our weaknesses are plain;<br>
+        you have lived on earth before us,<br>
+        you have felt our grief and pain:<br>
+        tempted, taunted, yet undaunted,<br>
+        from the depths you rose again.</p><br>
+        <p>Spirit of our God, descending,<br>
+        fill our hearts with holy peace;<br>
+        love with every passion blending,<br>
+        pleasure that can never cease:<br>
+        thus provided, pardoned, guided,<br>
+        ever shall our joys increase.</p>
+      </div>`
+  },
   {
     title: "The Declarations",
     text: "By Reverend"
@@ -82,25 +73,33 @@ const content = [
     title: "Reading: 1 Corinthians 13:1–13",
     class: "reading",
     html: `
-      <p>1 If I speak in the tongues of men and of angels, but have not love, I am a noisy gong...</p>`
+      <div class="scrollable-block">
+        <p>1 If I speak in the tongues of men and of angels, but have not love, I am a noisy gong...</p>
+      </div>`
   },
   {
     title: "Reading: John 4:7–12",
     class: "reading",
     html: `
-      <p>7 Dear friends, let us love one another, for love comes from God...</p>`
+      <div class="scrollable-block">
+        <p>7 Dear friends, let us love one another, for love comes from God...</p>
+      </div>`
   },
   {
     title: "HYMN: Grace ‘Tis a Perfect Sound",
     class: "hymn",
     html: `
-      <p>1 Grace! 'tis a charming sound... (lyrics)</p>`
+      <div class="scrollable-block">
+        <p>1 Grace! 'tis a charming sound... (lyrics)</p>
+      </div>`
   },
   {
     title: "Reading: Captain Corelli’s Mandolin",
     class: "reading",
     html: `
-      <p>Love is a temporary madness... (full passage)</p>`
+      <div class="scrollable-block">
+        <p>Love is a temporary madness... (full passage)</p>
+      </div>`
   },
   {
     title: "Sermon",
@@ -122,7 +121,11 @@ const content = [
     title: "The Lord’s Prayer",
     class: "prayer",
     html: `
-      <p>Our Father, who art in heaven... Amen</p>`
+      <div class="scrollable-block">
+        <p>Our Father, who art in heaven,<br>
+        hallowed be thy name...<br>
+        Amen</p>
+      </div>`
   },
   {
     title: "The Blessing",
@@ -149,13 +152,21 @@ content.forEach((item, index) => {
   section.className = `section colorful ${item.class || ""}`;
   if (item.centerHorizontal) section.classList.add("center-horizontal");
   if (item.centerVertical) section.classList.add("center-vertical");
-
   section.id = `section-${index}`;
+
   section.innerHTML = `
-    <div class="section-content">
-      <h1>${item.title}</h1>
-      ${item.text ? `<p>${item.text}</p>` : item.html || ""}
-    </div>`;
+    <div class="content-container">
+      <div class="section-content">
+        <h1>${item.title}</h1>
+        ${item.text ? `<p>${item.text}</p>` : item.html || ""}
+      </div>
+    </div>
+    <div class="footer-container">
+      <button onclick="prevSection()">Previous</button>
+      <button onclick="nextSection()">Next</button>
+    </div>
+  `;
+
   sectionsContainer.appendChild(section);
 
   const menuItem = document.createElement("li");
@@ -193,7 +204,7 @@ function goToSection(index) {
   toggleButton.classList.remove("hidden");
 }
 
-// Sidebar controls
+// Sidebar toggle
 toggleButton.addEventListener("click", () => {
   sidebar.classList.add("open");
   toggleButton.classList.add("hidden");
@@ -204,7 +215,7 @@ closeButton.addEventListener("click", () => {
   toggleButton.classList.remove("hidden");
 });
 
-// Keyboard navigation
+// Keyboard nav support
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") nextSection();
   if (e.key === "ArrowLeft") prevSection();
