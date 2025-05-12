@@ -44,7 +44,7 @@ const content = [
     title: "HYMN: Lead Us, Heavenly Father, Lead Us",
     class: "hymn",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>Lead us, heavenly Father, lead us<br>
         through this world's tempestuous sea;<br>
         guard us, guide us, keep us, feed us<br>
@@ -73,7 +73,7 @@ const content = [
     title: "Reading: 1 Corinthians 13:1–13",
     class: "reading",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>1 If I speak in the tongues of men and of angels, but have not love, I am a noisy gong...</p>
       </div>`
   },
@@ -81,7 +81,7 @@ const content = [
     title: "Reading: John 4:7–12",
     class: "reading",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>7 Dear friends, let us love one another, for love comes from God...</p>
       </div>`
   },
@@ -89,7 +89,7 @@ const content = [
     title: "HYMN: Grace ‘Tis a Perfect Sound",
     class: "hymn",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>1 Grace! 'tis a charming sound... (lyrics)</p>
       </div>`
   },
@@ -97,7 +97,7 @@ const content = [
     title: "Reading: Captain Corelli’s Mandolin",
     class: "reading",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>Love is a temporary madness... (full passage)</p>
       </div>`
   },
@@ -121,7 +121,7 @@ const content = [
     title: "The Lord’s Prayer",
     class: "prayer",
     html: `
-      <div class="scrollable-block">
+      <div class="">
         <p>Our Father, who art in heaven,<br>
         hallowed be thy name...<br>
         Amen</p>
@@ -147,6 +147,9 @@ const sidebar = document.getElementById("sidebar");
 const toggleButton = document.getElementById("menuToggle");
 const closeButton = document.getElementById("closeSidebar");
 
+let currentSection = 0;
+
+// Build Sections
 content.forEach((item, index) => {
   const section = document.createElement("div");
   section.className = `section colorful ${item.class || ""}`;
@@ -162,8 +165,8 @@ content.forEach((item, index) => {
       </div>
     </div>
     <div class="footer-container">
-      <button onclick="prevSection()">Previous</button>
-      <button onclick="nextSection()">Next</button>
+      <button onclick="prevSection()" aria-label="Previous Section">&lt;</button>
+      <button onclick="nextSection()" aria-label="Next Section">&gt;</button>
     </div>
   `;
 
@@ -174,9 +177,7 @@ content.forEach((item, index) => {
   menuList.appendChild(menuItem);
 });
 
-let currentSection = 0;
-showSection(currentSection);
-
+// Show current section
 function showSection(index) {
   document.querySelectorAll(".section").forEach((sec, i) => {
     sec.style.display = i === index ? "flex" : "none";
@@ -215,8 +216,11 @@ closeButton.addEventListener("click", () => {
   toggleButton.classList.remove("hidden");
 });
 
-// Keyboard nav support
+// Keyboard support
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") nextSection();
   if (e.key === "ArrowLeft") prevSection();
 });
+
+// Initial display
+showSection(currentSection);
