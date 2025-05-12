@@ -164,9 +164,9 @@ content.forEach((item, index) => {
         ${item.text ? `<p>${item.text}</p>` : item.html || ""}
       </div>
     </div>
-    <div class="footer-container">
-      <button onclick="prevSection()" aria-label="Previous Section">&lt;</button>
-      <button onclick="nextSection()" aria-label="Next Section">&gt;</button>
+    <div class="nav-floating-buttons">
+      <button onclick="prevSection()" aria-label="Previous Section" class="nav-btn">&lt;</button>
+      <button onclick="nextSection()" aria-label="Next Section" class="nav-btn">&gt;</button>
     </div>
   `;
 
