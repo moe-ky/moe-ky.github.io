@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Order of Service</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Menu Toggle Button -->
+  <button id="menuToggle">☰ Menu</button>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebar">
+    <button id="closeSidebar" aria-label="Close Menu">×</button>
+    <h2>Contents</h2>
+    <ul id="menuList"></ul>
+  </div>
+
+  <!-- Dynamic Sections -->
+  <div id="sections"></div>
+
+  <!-- Navigation Buttons -->
+  <div class="navigation">
+    <button onclick="prevSection()">Previous</button>
+    <button onclick="nextSection()">Next</button>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
