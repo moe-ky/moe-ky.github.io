@@ -6,6 +6,7 @@
   <title>Wedding Order of Service</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -22,7 +23,11 @@
   <!-- Section Container (populated by JS) -->
   <div id="sections"></div>
 
-  <div id="swipe-indicator">Swipe left or right to navigate</div>
+  <div id="swipe-toast" class="toast">
+    <span>Swipe left or right to navigate</span>
+    <button id="dismiss-toast" aria-label="Close">×</button>
+  </div>
+  
   <!-- Scripts -->
   <script src="script.js"></script>
 </body>

@@ -203,7 +203,8 @@ const content = [
   },
   {
     title: "Final Info",
-    text: "Guests are kindly invited to form two lines outside the church for a celebratory confetti send-off."
+    text: "Guests are kindly invited to form two lines outside the church for a celebratory confetti send-off.",
+    confetti: true,
   }
 ];
 
@@ -248,6 +249,11 @@ function showSection(index) {
   document.querySelectorAll(".section").forEach((sec, i) => {
     sec.style.display = i === index ? "flex" : "none";
   });
+
+  // Trigger confetti if enabled for this section
+  if (content[index].confetti) {
+    launchConfetti();
+  }  
 }
 
 function nextSection() {
@@ -311,17 +317,30 @@ function handleGesture() {
   }
 }
 
-// Show swipe indicator briefly on mobile
+// Show swipe toast only once
 window.addEventListener("load", () => {
+  const hasSeenToast = localStorage.getItem("seenSwipeToast");
+  const toast = document.getElementById("swipe-toast");
+  const closeBtn = document.getElementById("dismiss-toast");
+
+  // if (!hasSeenToast && window.innerWidth <= 768) {
   if (window.innerWidth <= 768) {
-    const indicator = document.getElementById("swipe-indicator");
-    indicator.classList.add("show");
-    setTimeout(() => {
-      indicator.classList.remove("show");
-    }, 4000); // Hide after 4 seconds
+    toast.classList.add("show");
+
+    closeBtn.addEventListener("click", () => {
+      toast.classList.remove("show");
+      localStorage.setItem("seenSwipeToast", "true");
+    });
   }
 });
 
+function launchConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
 
 // Initial render
 showSection(currentSection);
