@@ -31,6 +31,27 @@ html, body {
   flex-direction: column;
 }
 
+/* Inner scrolling container for long content */
+.scrolling-inner {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  padding-left: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Optional: make scrollable area more elegant */
+.scrolling-inner::-webkit-scrollbar {
+  width: 6px;
+}
+.scrolling-inner::-webkit-scrollbar-thumb {
+  background: #ff69b4;
+  border-radius: 10px;
+}
+
 .section-content {
   max-width: 900px;
   width: 100%;
@@ -219,6 +240,23 @@ html, body {
   cursor: pointer;
 }
 
+#swipe-indicator {
+  position: fixed;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 105, 180, 0.95);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 100;
+}
+
+
 /* Fonts */
 @media (min-width: 768px) {
   .section h1 {
@@ -229,5 +267,49 @@ html, body {
   }
   .cover-page .ampersand {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-floating-buttons {
+    display: none;
+  }
+
+  #swipe-indicator.show {
+    opacity: 1;
+  }  
+}
+
+@media (max-width: 480px) {
+  .section h1 {
+    font-size: 1.4rem;
+  }
+
+  .section p,
+  .section li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .cover-page h2 {
+    font-size: 1rem;
+  }
+
+  .cover-page .names {
+    font-size: 1.6rem;
+  }
+
+  .cover-page .ampersand {
+    font-size: 1.2rem;
+  }
+
+  .cover-page .details {
+    font-size: 0.85rem;
+  }
+
+  .nav-floating-buttons .nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
   }
 }

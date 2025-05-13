@@ -17,6 +17,7 @@ const content = [
   {
     title: "Wedding Party",
     html: `
+    <div class="scrolling-inner">
       <ul class="party-list">
         <li><strong>Officiant:</strong> Reverend Briony Mackie</li>
         <li><strong>Parents of the Bride:</strong> Names Placeholder</li>
@@ -26,7 +27,9 @@ const content = [
         <li><strong>Best Man:</strong> Name Placeholder</li>
         <li><strong>Groomsmen:</strong> Names Placeholder</li>
         <li><strong>Ring Bearer:</strong> Name Placeholder</li>
-      </ul>`
+      </ul>
+      </div>
+    `
   },
   {
     title: "Order of the Day",
@@ -44,7 +47,7 @@ const content = [
     title: "HYMN: Lead Us, Heavenly Father, Lead Us",
     class: "hymn",
     html: `
-      <div class="">
+      <div class="scrolling-inner">
         <p>Lead us, heavenly Father, lead us<br>
         through this world's tempestuous sea;<br>
         guard us, guide us, keep us, feed us<br>
@@ -73,34 +76,81 @@ const content = [
     title: "Reading: 1 Corinthians 13:1–13",
     class: "reading",
     html: `
-      <div class="">
-        <p>1 If I speak in the tongues of men and of angels, but have not love, I am a noisy gong...</p>
-      </div>`
+    <div class="scrolling-inner">
+      <p>1 If I speak in the tongues of men and of angels, but have not love, I am a noisy gong or a clanging cymbal.</p>
+      <p>2 And if I have prophetic powers, and understand all mysteries and all knowledge, and if I have all faith, so as to remove mountains, but have not love, I am nothing.</p>
+      <p>3 If I give away all I have, and if I deliver up my body to be burned, but have not love, I gain nothing.</p>
+      <p>4 Love is patient and kind; love does not envy or boast; it is not arrogant</p>
+      <p>5 or rude. It does not insist on its own way; it is not irritable or resentful.</p>
+      <p>6 It does not rejoice at wrongdoing but rejoices with the truth.</p>
+      <p>7 Love bears all things, believes all things, hopes all things, endures all things.</p>
+      <p>8 Love never ends. As for prophecies, they will pass away; as for tongues, they will cease; as for knowledge, it will pass away.</p>
+      <p>9 For we know in part, and we prophesy in part,</p>
+      <p>10 but when the perfect comes, the partial will pass away.</p>
+      <p>11 When I was a child, I spoke like a child, I thought like a child, I reasoned like a child. When I became a man, I gave up childish ways.</p>
+      <p>12 For now we see in a mirror dimly but then face to face. Now I know in part; then I shall know fully, even as I have been fully known.</p>
+      <p>13 So now faith, hope, and love abide, these three; but the greatest of these is love.</p>
+      </div>
+    `
   },
   {
     title: "Reading: John 4:7–12",
     class: "reading",
     html: `
-      <div class="">
-        <p>7 Dear friends, let us love one another, for love comes from God...</p>
-      </div>`
+      <div class="scrolling-inner">
+        <p>7 Dear friends, let us love one another, for love comes from God. Everyone who loves has been born of God and knows God.</p>
+        <p>8 Whoever does not love does not know God, because God is love.</p>
+        <p>9 This is how God showed his love among us: He sent his one and only Son into the world that we might live through him.</p>
+        <p>10 This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins.</p>
+        <p>11 Dear friends, since God so loved us, we also ought to love one another.</p>
+        <p>12 No one has ever seen God; but if we love one another, God lives in us and his love is made complete in us.</p>
+      </div>
+    `
   },
   {
     title: "HYMN: Grace ‘Tis a Perfect Sound",
     class: "hymn",
     html: `
-      <div class="">
-        <p>1 Grace! 'tis a charming sound... (lyrics)</p>
-      </div>`
-  },
+      <div class="scrolling-inner">
+        <p>1 Grace! 'tis a charming sound<br>
+        Harmonious to my ear;<br>
+        Heaven with the echo shall resound,<br>
+        And all the earth shall hear.</p>
+  
+        <p>2 Grace first contrived the way<br>
+        To save rebellious man;<br>
+        And all the steps that grace display<br>
+        Which drew the wondrous plan.</p>
+  
+        <p>3 Grace taught my wandering feet<br>
+        To tread the heavenly road;<br>
+        And new supplies each hour I meet,<br>
+        While pressing on to God.</p>
+  
+        <p>4 Grace all the works shall crown,<br>
+        Through everlasting days;<br>
+        It lays in heaven the topmost stone,<br>
+        And well deserves the praise.</p>
+      </div>
+    `
+  },  
   {
     title: "Reading: Captain Corelli’s Mandolin",
     class: "reading",
     html: `
-      <div class="">
-        <p>Love is a temporary madness... (full passage)</p>
-      </div>`
-  },
+      <div class="scrolling-inner">
+        <p>Love is a temporary madness; it erupts like volcanoes and then subsides. And when it subsides you have to make a decision. You have to work out whether your roots have so entwined together that it is inconceivable that you should ever part.</p>
+  
+        <p>Because this is what love is.</p>
+  
+        <p>Love is not breathlessness, it is not excitement, it is not the promulgation of promises of eternal passion. That is just being in love, which any fool can do.</p>
+  
+        <p>Love itself is what is left over when being in love has burned away, and this is both an art and a fortunate accident.</p>
+  
+        <p>Those that truly love have roots that grow towards each other underground, and when all the pretty blossoms have fallen from their branches, they find that they are one tree and not two.</p>
+      </div>
+    `
+  },  
   {
     title: "Sermon",
     text: "By Reverend"
@@ -121,12 +171,28 @@ const content = [
     title: "The Lord’s Prayer",
     class: "prayer",
     html: `
-      <div class="">
+      <div class="scrolling-inner">
         <p>Our Father, who art in heaven,<br>
-        hallowed be thy name...<br>
+        hallowed be thy name.</p>
+  
+        <p>Thy kingdom come, thy will be done;<br>
+        on earth as it is in heaven.</p>
+  
+        <p>Give us this day our daily bread;<br>
+        and forgive us our trespasses</p>
+  
+        <p>As we forgive those who trespass against us;<br>
+        and lead us not into temptation,</p>
+  
+        <p>But deliver us from evil.<br>
+        For thine is the Kingdom</p>
+  
+        <p>The power and the glory<br>
+        For ever and ever.<br>
         Amen</p>
-      </div>`
-  },
+      </div>
+    `
+  },  
   {
     title: "The Blessing",
     text: "By Reverend"
@@ -149,7 +215,7 @@ const closeButton = document.getElementById("closeSidebar");
 
 let currentSection = 0;
 
-// Build Sections
+// Build sections from content array
 content.forEach((item, index) => {
   const section = document.createElement("div");
   section.className = `section colorful ${item.class || ""}`;
@@ -177,7 +243,7 @@ content.forEach((item, index) => {
   menuList.appendChild(menuItem);
 });
 
-// Show current section
+// Show only the current section
 function showSection(index) {
   document.querySelectorAll(".section").forEach((sec, i) => {
     sec.style.display = i === index ? "flex" : "none";
@@ -205,7 +271,7 @@ function goToSection(index) {
   toggleButton.classList.remove("hidden");
 }
 
-// Sidebar toggle
+// Menu sidebar toggle
 toggleButton.addEventListener("click", () => {
   sidebar.classList.add("open");
   toggleButton.classList.add("hidden");
@@ -216,11 +282,46 @@ closeButton.addEventListener("click", () => {
   toggleButton.classList.remove("hidden");
 });
 
-// Keyboard support
+// Keyboard navigation
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") nextSection();
   if (e.key === "ArrowLeft") prevSection();
 });
 
-// Initial display
+// Swipe gesture support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
+
+function handleGesture() {
+  const swipeDistance = 50; // Minimum distance in px
+  if (touchEndX < touchStartX - swipeDistance) {
+    nextSection();
+  }
+  if (touchEndX > touchStartX + swipeDistance) {
+    prevSection();
+  }
+}
+
+// Show swipe indicator briefly on mobile
+window.addEventListener("load", () => {
+  if (window.innerWidth <= 768) {
+    const indicator = document.getElementById("swipe-indicator");
+    indicator.classList.add("show");
+    setTimeout(() => {
+      indicator.classList.remove("show");
+    }, 4000); // Hide after 4 seconds
+  }
+});
+
+
+// Initial render
 showSection(currentSection);
