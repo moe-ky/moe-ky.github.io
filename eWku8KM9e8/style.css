@@ -7,28 +7,28 @@
 
 html, body {
   height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: auto; /* ✅ allow scroll if needed */
+  overflow: hidden;
 }
 
 /* Section Wrapper */
 .section {
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden; /* 🚫 Prevent scrolling */
+  position: relative;
 }
-
 
 /* Scrollable Content Container */
 .content-container {
   flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  overflow: hidden; /* 🚫 Prevent scroll */
   padding: 1rem 1.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* Inner scrolling container for long content */
