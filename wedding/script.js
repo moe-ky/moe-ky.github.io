@@ -4,12 +4,12 @@ const content = [
     html: `
       <div class="cover-page">
         <h2>ORDER OF SERVICE FOR THE MARRIAGE OF</h2>
-        <h1 class="names">Bride Name Placeholder</h1>
+        <h1 class="names">Shanice Wilson</h1>
         <h1 class="ampersand">&amp;</h1>
-        <h1 class="names">Groom Name Placeholder</h1>
-        <p class="details">Location of Ceremony Placeholder</p>
-        <p class="details">Date of Wedding Placeholder</p>
-        <p class="details">Time to Arrive Placeholder</p>
+        <h1 class="names">Moyin Koiki</h1>
+        <p class="details">All Saints, Fulham. Putney Bridge Approach, London SW6 3LA</p>
+        <p class="details">Thursday 22nd May</p>
+        <p class="details">Time to Arrive: 10:30</p>
       </div>`,
     centerHorizontal: true,
     centerVertical: true
@@ -20,13 +20,18 @@ const content = [
     <div class="scrolling-inner">
       <ul class="party-list">
         <li><strong>Officiant:</strong> Reverend Briony Mackie</li>
-        <li><strong>Parents of the Bride:</strong> Names Placeholder</li>
-        <li><strong>Parents of the Groom:</strong> Names Placeholder</li>
-        <li><strong>Maid of Honour:</strong> Name Placeholder</li>
-        <li><strong>Bridesmaid:</strong> Name Placeholder</li>
-        <li><strong>Best Man:</strong> Name Placeholder</li>
-        <li><strong>Groomsmen:</strong> Names Placeholder</li>
-        <li><strong>Ring Bearer:</strong> Name Placeholder</li>
+        <li><strong>Parents of the Bride:</strong> Mr & Mrs Wilson</li>
+        <li><strong>Parents of the Groom:</strong> Mr & Mrs Koiki</li>
+        <li><strong>Maid of Honour:</strong> Monique Wilson</li>
+        <li><strong>Bridesmaid:</strong> Kiite Koiki</li>
+        <li><strong>Bridesmaid:</strong> Tatiana Young</li>
+        <li><strong>Best Man:</strong> Toby Shodipo</li>
+        <li><strong>Groomsmen:</strong> Thilaxan Paramanathan</li>
+        <li><strong>Groomsmen:</strong> Mide Shodipo</li>
+        <li><strong>Groomsmen:</strong> Babatunde Animashaun</li>
+        <li><strong>Groomsmen:</strong> Sean Animashaun</li>
+        <li><strong>Groomsmen:</strong> Robert Animashaun</li>
+        <li><strong>Ring Bearer:</strong> Adam Gbadamosi</li>
       </ul>
       </div>
     `
