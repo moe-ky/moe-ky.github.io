@@ -210,7 +210,31 @@ const content = [
     title: "Final Info",
     text: "Guests are kindly invited to form two lines outside the church for a celebratory confetti send-off.",
     confetti: true,
-  }
+  },
+// {
+//   title: "Upload Your Photos",
+//   class: "upload",
+//   html: `
+//     <div class="upload-container">
+//       <div class="couple-photo-placeholder">
+//         <p>👰‍♀️🤵‍♂️ Photo of the lovely couple</p>
+//       </div>
+
+//       <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.zip" />
+
+//       <button onclick="startUpload()" class="upload-btn">Upload Files</button>
+
+//       <p class="upload-instructions">
+//         Please upload any photos or videos you’ve taken today.<br>
+//         You can upload images or a .zip file (max 100MB).
+//       </p>
+
+//       <p id="uploadStatus" class="upload-status"></p>
+//     </div>
+//   `,
+//   centerHorizontal: true,
+//   centerVertical: false
+// }
 ];
 
 const sectionsContainer = document.getElementById("sections");
@@ -346,6 +370,66 @@ function launchConfetti() {
     origin: { y: 0.6 }
   });
 }
+
+async function startUpload() {
+  const input = document.getElementById("fileInput");
+  const status = document.getElementById("uploadStatus");
+  status.textContent = "";
+
+  const files = input.files;
+  if (!files.length) {
+    status.textContent = "Please select at least one file.";
+    return;
+  }
+
+  const MAX_SIZE_MB = 100;
+  let totalSize = 0;
+  for (const file of files) {
+    totalSize += file.size;
+  }
+  if (totalSize > MAX_SIZE_MB * 1024 * 1024) {
+    status.textContent = "Total upload size exceeds 100MB.";
+    return;
+  }
+
+  status.textContent = "Uploading files...";
+
+  for (const file of files) {
+    try {
+      // Get pre-signed URL from your backend
+      const res = await fetch('https://api-main.thecontentbench.com/upload-url', {
+        method: 'POST',
+        credentials: "include",
+        body: JSON.stringify({
+          filename: file.name,
+          contentType: file.type
+        })
+      });
+
+      const { url, fields } = await res.json();
+      if (!url) throw new Error("No URL received");
+
+      // Upload to S3 via PUT
+      const uploadRes = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': file.type
+        },
+        body: file
+      });
+
+      if (!uploadRes.ok) throw new Error("Upload failed");
+
+    } catch (err) {
+      console.error("Upload failed:", err);
+      status.textContent = "Upload failed for one or more files.";
+      return;
+    }
+  }
+
+  status.textContent = "✅ Upload successful! Thank you 🎉";
+}
+
 
 // Initial render
 showSection(currentSection);
