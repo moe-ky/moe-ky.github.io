@@ -211,30 +211,30 @@ const content = [
     text: "Guests are kindly invited to form two lines outside the church for a celebratory confetti send-off.",
     confetti: true,
   },
-// {
-//   title: "Upload Your Photos",
-//   class: "upload",
-//   html: `
-//     <div class="upload-container">
-//       <div class="couple-photo-placeholder">
-//         <p>👰‍♀️🤵‍♂️ Photo of the lovely couple</p>
-//       </div>
+{
+  title: "Upload Your Photos",
+  class: "upload",
+  html: `
+    <div class="upload-container">
+      <div class="couple-photo-placeholder">
+        <p>👰‍♀️🤵‍♂️ Photo of the lovely couple</p>
+      </div>
 
-//       <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.zip" />
+      <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.zip" />
 
-//       <button onclick="startUpload()" class="upload-btn">Upload Files</button>
+      <button onclick="startUpload()" class="upload-btn">Upload Files</button>
 
-//       <p class="upload-instructions">
-//         Please upload any photos or videos you’ve taken today.<br>
-//         You can upload images or a .zip file (max 100MB).
-//       </p>
+      <p class="upload-instructions">
+        Please upload any photos or videos you’ve taken today.<br>
+        You can upload images or a .zip file (max 100MB).
+      </p>
 
-//       <p id="uploadStatus" class="upload-status"></p>
-//     </div>
-//   `,
-//   centerHorizontal: true,
-//   centerVertical: false
-// }
+      <p id="uploadStatus" class="upload-status"></p>
+    </div>
+  `,
+  centerHorizontal: true,
+  centerVertical: false
+}
 ];
 
 const sectionsContainer = document.getElementById("sections");
@@ -273,21 +273,20 @@ content.forEach((item, index) => {
   menuList.appendChild(menuItem);
 });
 
-// Show only the current section
 function showSection(index) {
   document.querySelectorAll(".section").forEach((sec, i) => {
     sec.style.display = i === index ? "flex" : "none";
   });
 
-  // Trigger confetti if enabled for this section
   if (content[index].confetti) {
     launchConfetti();
-  }  
+  }
 }
 
 function nextSection() {
   if (currentSection < content.length - 1) {
     currentSection++;
+    localStorage.setItem('currentSectionIndex', currentSection);
     showSection(currentSection);
   }
 }
@@ -295,18 +294,19 @@ function nextSection() {
 function prevSection() {
   if (currentSection > 0) {
     currentSection--;
+    localStorage.setItem('currentSectionIndex', currentSection);
     showSection(currentSection);
   }
 }
 
 function goToSection(index) {
   currentSection = index;
+  localStorage.setItem('currentSectionIndex', currentSection);
   showSection(currentSection);
   sidebar.classList.remove("open");
   toggleButton.classList.remove("hidden");
 }
 
-// Menu sidebar toggle
 toggleButton.addEventListener("click", () => {
   sidebar.classList.add("open");
   toggleButton.classList.add("hidden");
@@ -317,13 +317,12 @@ closeButton.addEventListener("click", () => {
   toggleButton.classList.remove("hidden");
 });
 
-// Keyboard navigation
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") nextSection();
   if (e.key === "ArrowLeft") prevSection();
 });
 
-// Swipe gesture support for mobile
+// Swipe support
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -337,7 +336,7 @@ document.addEventListener("touchend", function (e) {
 });
 
 function handleGesture() {
-  const swipeDistance = 50; // Minimum distance in px
+  const swipeDistance = 50;
   if (touchEndX < touchStartX - swipeDistance) {
     nextSection();
   }
@@ -346,13 +345,12 @@ function handleGesture() {
   }
 }
 
-// Show swipe toast only once
+// Toast notice
 window.addEventListener("load", () => {
   const hasSeenToast = localStorage.getItem("seenSwipeToast");
   const toast = document.getElementById("swipe-toast");
   const closeBtn = document.getElementById("dismiss-toast");
 
-  // if (!hasSeenToast && window.innerWidth <= 768) {
   if (window.innerWidth <= 768) {
     toast.classList.add("show");
 
@@ -396,40 +394,53 @@ async function startUpload() {
 
   for (const file of files) {
     try {
-      // Get pre-signed URL from your backend
       const res = await fetch('https://api-main.thecontentbench.com/upload-url', {
         method: 'POST',
         credentials: "include",
         body: JSON.stringify({
-          filename: file.name,
-          contentType: file.type
+          userId: 'wedding-user',
+          fileName: file.name,
+          contentType: file.type,
+          fileExtension: file.name.split(".").slice(-1)[0],
+          fileSizeMb: file.size,
+          serviceName: 'UPLOAD',
+          contentType: file.type,
         })
       });
 
-      const { url, fields } = await res.json();
-      if (!url) throw new Error("No URL received");
+      const { response } = await res.json();
 
-      // Upload to S3 via PUT
-      const uploadRes = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': file.type
-        },
-        body: file
-      });
+      const configUrlForUpload = (resp) => {
+        const formData = new FormData();
+        Object.keys(resp.fields).forEach(key => formData.append(key, resp.fields[key]));
+        formData.append('file', file);
+        return { url: resp.url, data: formData };
+      };
 
-      if (!uploadRes.ok) throw new Error("Upload failed");
+      const upload = async (url, formData) => {
+        const uploadResponse = await fetch(url, { method: 'POST', body: formData });
+        if (!uploadResponse.ok) {
+          throw new Error('Failed to upload. Please try again later.');
+        }
+      };
+
+      const config = configUrlForUpload(response);
+      await upload(config.url, config.data);
 
     } catch (err) {
       console.error("Upload failed:", err);
-      status.textContent = "Upload failed for one or more files.";
+      status.textContent = "🚫🚫🚫Upload FAILED for one or more files.🚫🚫🚫";
       return;
     }
   }
 
   status.textContent = "✅ Upload successful! Thank you 🎉";
+  setTimeout(() => location.reload(), 3000);
 }
 
-
-// Initial render
+// Restore last section from localStorage
+const savedIndex = parseInt(localStorage.getItem('currentSectionIndex'), 10);
+if (!isNaN(savedIndex) && savedIndex >= 0 && savedIndex < content.length) {
+  currentSection = savedIndex;
+}
 showSection(currentSection);
