@@ -138,7 +138,7 @@ const content = [
         And well deserves the praise.</p>
       </div>
     `
-  },  
+  },
   {
     title: "Reading: Captain Corelli’s Mandolin",
     class: "reading",
@@ -155,7 +155,7 @@ const content = [
         <p>Those that truly love have roots that grow towards each other underground, and when all the pretty blossoms have fallen from their branches, they find that they are one tree and not two.</p>
       </div>
     `
-  },  
+  },
   {
     title: "Sermon",
     text: "By Reverend"
@@ -197,7 +197,7 @@ const content = [
         Amen</p>
       </div>
     `
-  },  
+  },
   {
     title: "The Blessing",
     text: "By Reverend"
@@ -207,19 +207,15 @@ const content = [
     text: "Music: Best of My Love – The Emotions"
   },
   {
-    title: "Final Info",
+    title: "Confetti Time",
     text: "Guests are kindly invited to form two lines outside the church for a celebratory confetti send-off.",
     confetti: true,
   },
-{
-  title: "Upload Photos",
-  class: "upload",
-  html: `
+  {
+    title: "Upload & View Photos",
+    class: "upload-gallery",
+    html: `
     <div class="upload-container">
-      <div class="couple-photo-placeholder">
-        <p>👰‍♀️🤵‍♂️ Photo of the lovely couple</p>
-      </div>
-
       <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.zip" />
 
       <button onclick="startUpload()" class="upload-btn">Upload Files</button>
@@ -231,10 +227,14 @@ const content = [
 
       <p id="uploadStatus" class="upload-status"></p>
     </div>
+
+    <div id="gallery" class="scrolling-inner gallery-grid">
+      <p>Loading photos...</p>
+    </div>
   `,
-  centerHorizontal: true,
-  centerVertical: false
-}
+    centerHorizontal: true,
+    centerVertical: false
+  },
 ];
 
 const sectionsContainer = document.getElementById("sections");
@@ -280,6 +280,13 @@ function showSection(index) {
 
   if (content[index].confetti) {
     launchConfetti();
+  }
+
+  if (
+    content[index].class === "gallery" ||
+    content[index].class === "upload-gallery"
+  ) {
+    loadGalleryImages();
   }
 }
 
@@ -443,4 +450,39 @@ const savedIndex = parseInt(localStorage.getItem('currentSectionIndex'), 10);
 if (!isNaN(savedIndex) && savedIndex >= 0 && savedIndex < content.length) {
   currentSection = savedIndex;
 }
+
+async function loadGalleryImages() {
+  const gallery = document.getElementById("gallery");
+  if (!gallery) return;
+
+  try {
+    const res = await fetch('https://api-main.thecontentbench.com/files', {
+      method: 'POST',
+      credentials: "include",
+      body: JSON.stringify({
+        userId: 'wedding-user',
+        serviceName: 'UPLOAD',
+      })
+    });
+    const { response } = await res.json();
+
+    if (!response.length) {
+      gallery.innerHTML = "<p>No photos uploaded yet. Check back later!</p>";
+      return;
+    }
+
+    gallery.innerHTML = ""; // Clear loading text
+
+    response.forEach(file => {
+      const img = document.createElement("img");
+      img.src = file;
+      img.alt = "Uploaded Photo";
+      gallery.appendChild(img);
+    });
+  } catch (err) {
+    console.error("Error loading gallery:", err);
+    gallery.innerHTML = "<p>Failed to load images. Please try again later.</p>";
+  }
+}
+
 showSection(currentSection);
