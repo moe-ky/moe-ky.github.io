@@ -212,7 +212,7 @@ const content = [
     confetti: true,
   },
 {
-  title: "Upload Your Photos",
+  title: "Upload Photos",
   class: "upload",
   html: `
     <div class="upload-container">
