@@ -25,7 +25,7 @@ const content = [
         <li><strong>Maid of Honour:</strong> Monique Wilson</li>
         <li><strong>Bridesmaid:</strong> Kiite Koiki</li>
         <li><strong>Bridesmaid:</strong> Tatiana Young</li>
-        <li><strong>Best Man:</strong> Toby Shodipo</li>
+        <li><strong>Best Man:</strong> Tobi Shodipo</li>
         <li><strong>Groomsmen:</strong> Thilaxan Paramanathan</li>
         <li><strong>Groomsmen:</strong> Mide Shodipo</li>
         <li><strong>Groomsmen:</strong> Babatunde Animashaun</li>
