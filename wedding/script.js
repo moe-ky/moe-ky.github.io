@@ -227,15 +227,15 @@ const content = [
 
       <p id="uploadStatus" class="upload-status"></p>
     </div>
-
-    <div id="gallery" class="scrolling-inner gallery-grid">
-      <p>Loading photos...</p>
-    </div>
   `,
     centerHorizontal: true,
     centerVertical: false
   },
 ];
+
+    // <div id="gallery" class="scrolling-inner gallery-grid">
+    //   <p>Loading photos...</p>
+    // </div>
 
 const sectionsContainer = document.getElementById("sections");
 const menuList = document.getElementById("menuList");
